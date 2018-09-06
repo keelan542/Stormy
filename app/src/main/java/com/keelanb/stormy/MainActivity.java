@@ -60,8 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-
-        Log.d(TAG, "Main UI code is running");
     }
 
     private boolean isNetworkAvailable() {
@@ -83,9 +81,9 @@ public class MainActivity extends AppCompatActivity {
         AlertDialogFragment dialogFragment = new AlertDialogFragment();
 
         Bundle args = new Bundle();
-        args.putInt("errorCode", errorCode);
+        args.putInt(getString(R.string.error_code_alert_dialog), errorCode);
         dialogFragment.setArguments(args);
 
-        dialogFragment.show(getFragmentManager(), "error_dialog");
+        dialogFragment.show(getFragmentManager(), getString(R.string.error_code_tag));
     }
 }
