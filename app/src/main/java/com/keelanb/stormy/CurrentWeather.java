@@ -1,5 +1,9 @@
 package com.keelanb.stormy;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 public class CurrentWeather {
     private String locationLabel;
     private String icon;
@@ -8,6 +12,16 @@ public class CurrentWeather {
     private double humidity;
     private double precipChance;
     private String summary;
+
+    public String getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
+    }
+
+    private String timeZone;
 
     public String getLocationLabel() {
         return locationLabel;
@@ -31,6 +45,16 @@ public class CurrentWeather {
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+
+    public String getFormattedTime() {
+        SimpleDateFormat formatter = new SimpleDateFormat("h:mm a");
+
+        formatter.setTimeZone(TimeZone.getTimeZone(timeZone));
+
+        Date dateTime = new Date(time * 1000);
+        return formatter.format(dateTime);
     }
 
     public double getTemperature() {
