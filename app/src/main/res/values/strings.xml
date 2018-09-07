@@ -7,4 +7,5 @@
     <string name="network_error_message">A network error occured</string>
     <string name="error_code_alert_dialog">errorCode</string>
     <string name="error_code_tag">error_dialog</string>
+    <string name="dark_sky_message"><a href="https://darksky.net/poweredby">Powered by DarkSky</a></string>
 </resources>
