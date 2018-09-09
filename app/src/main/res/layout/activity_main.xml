@@ -17,9 +17,10 @@
             android:id="@+id/temperatureValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="100"
+            tools:text="100"
             android:textColor="@android:color/white"
             android:textSize="150sp"
+            android:text="@{String.valueOf(Math.round(weather.temperature)), default=`25`}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -38,26 +39,24 @@
             android:id="@+id/timeValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
             android:textColor="@color/half_white"
             android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/temperatureValue"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            tools:text="At 5:00 PM it will be" />
+            android:text="@{`At ` + String.valueOf(weather.formattedTime) + ` it will be`, default=`At 5:00PM it will be`}" />
 
         <TextView
             android:id="@+id/locationValue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            android:text="TextView"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/timeValue"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            tools:text="Alcatraz Island, CA" />
+            android:text="@{String.valueOf(weather.locationLabel), default=`Alcatraz`}" />
 
         <ImageView
             android:id="@+id/iconImageView"
@@ -90,12 +89,11 @@
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:paddingTop="15dp"
-            android:text="TextView"
             android:textColor="@color/half_white"
             app:layout_constraintLeft_toLeftOf="@+id/guideline"
             app:layout_constraintRight_toRightOf="@+id/guideline"
             app:layout_constraintTop_toBottomOf="@+id/temperatureValue"
-            tools:text="HUMIDITY" />
+            android:text="HUMIDITY" />
 
         <TextView
             android:id="@+id/humidityValue"
@@ -104,13 +102,12 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="@+id/humidityLabel"
             app:layout_constraintRight_toRightOf="@+id/humidityLabel"
             app:layout_constraintTop_toBottomOf="@+id/humidityLabel"
-            tools:text="0.88" />
+            android:text="@{String.valueOf(weather.humidity), default=`0.88`}" />
 
         <TextView
             android:id="@+id/precipLabel"
@@ -120,12 +117,11 @@
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
             android:paddingTop="15dp"
-            android:text="TextView"
             android:textColor="@color/half_white"
             app:layout_constraintLeft_toLeftOf="@+id/guideline2"
             app:layout_constraintRight_toRightOf="@+id/guideline2"
             app:layout_constraintTop_toBottomOf="@+id/temperatureValue"
-            tools:text="RAIN/SNOW?" />
+            android:text="RAIN/SNOW?" />
 
         <TextView
             android:id="@+id/precipValue"
@@ -134,13 +130,12 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:text="TextView"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             app:layout_constraintLeft_toLeftOf="@+id/precipLabel"
             app:layout_constraintRight_toRightOf="@+id/precipLabel"
             app:layout_constraintTop_toBottomOf="@+id/precipLabel"
-            tools:text="70%" />
+            android:text="@{String.valueOf(Math.round(weather.precipChance * 100)) + `%`, default=`50%`}" />
 
         <TextView
             android:id="@+id/summaryValue"
@@ -149,7 +144,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginTop="8dp"
-            android:text="@{weather.summary}"
+            android:text="@{weather.summary, default=`Stormy with a chance of meatballs`}"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
