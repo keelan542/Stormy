@@ -9,8 +9,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.keelanb.stormy.databinding.ActivityMainBinding;
 
@@ -33,9 +35,16 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView iconImageView;
 
+    final double latitude = 37.8267;
+    final double longitude = -122.4233;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getForecast(latitude, longitude);
+    }
+
+    private void getForecast(double latitude, double longitude) {
         final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         TextView darkSky = findViewById(R.id.darkSkyAttribution);
@@ -45,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
         iconImageView = findViewById(R.id.iconImageView);
 
         String apiKey = "2a6473b98d11fc375c3068d0f691a876";
-
-        double latitude = 37.8267;
-        double longitude = -122.4233;
 
         String forecastURL = "https://api.darksky.net/forecast/" + apiKey + "/" + latitude + "," + longitude;
 
@@ -151,5 +157,10 @@ public class MainActivity extends AppCompatActivity {
         dialogFragment.setArguments(args);
 
         dialogFragment.show(getFragmentManager(), getString(R.string.error_code_tag));
+    }
+
+    public void refreshOnClick(View view)  {
+        Toast.makeText(this, "Refreshing data", Toast.LENGTH_SHORT).show();
+        getForecast(latitude, longitude);
     }
 }
