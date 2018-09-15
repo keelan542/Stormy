@@ -14,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
 import com.keelanb.stormy.databinding.ActivityMainBinding;
 
 import org.json.JSONException;
@@ -35,23 +33,21 @@ public class MainActivity extends AppCompatActivity {
 
     private CurrentWeather currentWeather;
 
-    private FusedLocationProviderClient fusedLocationProviderClient;
-
     private ImageView iconImageView;
 
-    final double latitude = 37.8267;
-    final double longitude = -122.4233;
+    private double latitude;
+    private double longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getForecast(latitude, longitude);
+
+        getForecast(longitude, latitude);
     }
 
-    private void getForecast(double latitude, double longitude) {
-        final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+    private void getForecast(double longitude, double latitude) {
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+        final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
         TextView darkSky = findViewById(R.id.darkSkyAttribution);
 
@@ -84,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.v(TAG, jsonData);
                         if (response.isSuccessful()) {
                             currentWeather = getCurrentDetails(jsonData);
+                            Log.v(TAG, currentWeather.getLocationLabel());
 
                             final CurrentWeather displayWeather = new CurrentWeather(
                                     currentWeather.getLocationLabel(),
@@ -165,6 +162,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void refreshOnClick(View view)  {
         Toast.makeText(this, "Refreshing data", Toast.LENGTH_SHORT).show();
-        getForecast(latitude, longitude);
+        getForecast(longitude, latitude);
     }
 }
