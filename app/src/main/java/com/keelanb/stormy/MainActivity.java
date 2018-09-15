@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.keelanb.stormy.databinding.ActivityMainBinding;
 
 import org.json.JSONException;
@@ -33,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
     private CurrentWeather currentWeather;
 
+    private FusedLocationProviderClient fusedLocationProviderClient;
+
     private ImageView iconImageView;
 
     final double latitude = 37.8267;
@@ -46,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void getForecast(double latitude, double longitude) {
         final ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         TextView darkSky = findViewById(R.id.darkSkyAttribution);
 
