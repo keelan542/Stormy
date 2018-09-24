@@ -1,4 +1,6 @@
-package com.keelanb.stormy;
+package com.keelanb.stormy.Weather;
+
+import com.keelanb.stormy.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

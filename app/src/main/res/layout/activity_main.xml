@@ -5,7 +5,7 @@
     <data>
         <variable
             name="weather"
-            type="com.keelanb.stormy.CurrentWeather"/>
+            type="com.keelanb.stormy.Weather.CurrentWeather"/>
     </data>
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
