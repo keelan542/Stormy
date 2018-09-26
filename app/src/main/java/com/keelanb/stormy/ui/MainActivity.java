@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.keelanb.stormy.R;
 import com.keelanb.stormy.Weather.Current;
+import com.keelanb.stormy.Weather.Forecast;
 import com.keelanb.stormy.databinding.ActivityMainBinding;
 
 import org.json.JSONException;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
-    private Current current;
+    private Forecast forecast;
 
     private ImageView iconImageView;
 
@@ -81,8 +82,9 @@ public class MainActivity extends AppCompatActivity {
                         String jsonData = response.body().string();
                         Log.v(TAG, jsonData);
                         if (response.isSuccessful()) {
-                            current = getCurrentDetails(jsonData);
-                            Log.v(TAG, current.getLocationLabel());
+                            forecast = parseForecastData(jsonData);
+
+                            Current current = forecast.getCurrent();
 
                             final Current displayWeather = new Current(
                                     current.getLocationLabel(),
@@ -115,6 +117,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    private Forecast parseForecastData(String jsonData) throws JSONException {
+        Forecast forecast = new Forecast();
+
+        forecast.setCurrent(getCurrentDetails(jsonData));
+
+        return forecast;
     }
 
     private Current getCurrentDetails(String jsonData) throws JSONException {
