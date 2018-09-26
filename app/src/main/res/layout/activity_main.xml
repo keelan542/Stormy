@@ -176,5 +176,22 @@
             app:layout_constraintTop_toTopOf="parent"
             android:onClick="refreshOnClick"
             app:srcCompat="@drawable/refresh" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:background="#40ffffff"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="HOURLY FORECAST"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/summaryValue" />
     </android.support.constraint.ConstraintLayout>
 </layout>
