@@ -17,8 +17,10 @@ import android.widget.Toast;
 import com.keelanb.stormy.R;
 import com.keelanb.stormy.Weather.Current;
 import com.keelanb.stormy.Weather.Forecast;
+import com.keelanb.stormy.Weather.Hour;
 import com.keelanb.stormy.databinding.ActivityMainBinding;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -123,8 +125,34 @@ public class MainActivity extends AppCompatActivity {
         Forecast forecast = new Forecast();
 
         forecast.setCurrent(getCurrentDetails(jsonData));
+        forecast.setHourlyForecast(getHourlyForecast(jsonData));
 
         return forecast;
+    }
+
+    private Hour[] getHourlyForecast(String jsonData) throws JSONException {
+        JSONObject forecast = new JSONObject(jsonData);
+        String timezone = forecast.getString("timezone");
+
+        JSONObject hourly = forecast.getJSONObject("hourly");
+        JSONArray data = hourly.getJSONArray("data");
+
+        Hour[] hourlyArray = new Hour[data.length()];
+        for (int i = 0; i < hourlyArray.length; i++) {
+            JSONObject currentHour = data.getJSONObject(i);
+
+            Hour hour = new Hour();
+
+            hour.setTime(currentHour.getLong("time"));
+            hour.setSummary(currentHour.getString("summary"));
+            hour.setIcon(currentHour.getString("icon"));
+            hour.setTemperature(currentHour.getDouble("temperature"));
+            hour.setTimeZone(timezone);
+
+            hourlyArray[i] = hour;
+        }
+
+        return hourlyArray;
     }
 
     private Current getCurrentDetails(String jsonData) throws JSONException {
