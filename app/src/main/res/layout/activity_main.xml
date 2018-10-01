@@ -7,195 +7,196 @@
             name="weather"
             type="com.keelanb.stormy.Weather.Current"/>
     </data>
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/appBackground"
-        tools:context=".ui.MainActivity">
 
-        <TextView
-            android:id="@+id/temperatureValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="100"
-            android:textColor="@android:color/white"
-            android:textSize="150sp"
-            android:text="@{String.valueOf(Math.round(weather.temperature)), default=`25`}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/appBackground"
+            tools:context=".ui.MainActivity">
 
-        <ImageView
-            android:id="@+id/degreeImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
-            app:layout_constraintLeft_toRightOf="@+id/temperatureValue"
-            app:layout_constraintTop_toTopOf="@+id/temperatureValue"
-            app:srcCompat="@drawable/degree" />
+            <TextView
+                android:id="@+id/temperatureValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="100"
+                android:textColor="@android:color/white"
+                android:textSize="150sp"
+                android:text="@{String.valueOf(Math.round(weather.temperature)), default=`25`}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/timeValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/half_white"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/temperatureValue"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text="@{`At ` + String.valueOf(weather.formattedTime) + ` it will be`, default=`At 5:00PM it will be`}" />
+            <ImageView
+                android:id="@+id/degreeImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                app:layout_constraintLeft_toRightOf="@+id/temperatureValue"
+                app:layout_constraintTop_toTopOf="@+id/temperatureValue"
+                app:srcCompat="@drawable/degree" />
 
-        <TextView
-            android:id="@+id/locationValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/timeValue"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:text="@{String.valueOf(weather.locationLabel), default=`Alcatraz`}" />
+            <TextView
+                android:id="@+id/timeValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/half_white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@+id/temperatureValue"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@{`At ` + String.valueOf(weather.formattedTime) + ` it will be`, default=`At 5:00PM it will be`}" />
 
-        <ImageView
-            android:id="@+id/iconImageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="32dp"
-            app:layout_constraintBottom_toBottomOf="@+id/locationValue"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:srcCompat="@drawable/cloudy_night" />
+            <TextView
+                android:id="@+id/locationValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/timeValue"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="@{String.valueOf(weather.locationLabel), default=`Alcatraz`}" />
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.33"/>
+            <ImageView
+                android:id="@+id/iconImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/locationValue"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:srcCompat="@drawable/cloudy_night" />
 
-        <android.support.constraint.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.66"/>
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.33"/>
 
-        <TextView
-            android:id="@+id/humidityLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:paddingTop="15dp"
-            android:textColor="@color/half_white"
-            app:layout_constraintLeft_toLeftOf="@+id/guideline"
-            app:layout_constraintRight_toRightOf="@+id/guideline"
-            app:layout_constraintTop_toBottomOf="@+id/temperatureValue"
-            android:text="HUMIDITY" />
+            <android.support.constraint.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.66"/>
 
-        <TextView
-            android:id="@+id/humidityValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            app:layout_constraintLeft_toLeftOf="@+id/humidityLabel"
-            app:layout_constraintRight_toRightOf="@+id/humidityLabel"
-            app:layout_constraintTop_toBottomOf="@+id/humidityLabel"
-            android:text="@{String.valueOf(weather.humidity), default=`0.88`}" />
+            <TextView
+                android:id="@+id/humidityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/half_white"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline"
+                app:layout_constraintRight_toRightOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/temperatureValue"
+                android:text="HUMIDITY" />
 
-        <TextView
-            android:id="@+id/precipLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:paddingTop="15dp"
-            android:textColor="@color/half_white"
-            app:layout_constraintLeft_toLeftOf="@+id/guideline2"
-            app:layout_constraintRight_toRightOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/temperatureValue"
-            android:text="RAIN/SNOW?" />
+            <TextView
+                android:id="@+id/humidityValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintLeft_toLeftOf="@+id/humidityLabel"
+                app:layout_constraintRight_toRightOf="@+id/humidityLabel"
+                app:layout_constraintTop_toBottomOf="@+id/humidityLabel"
+                android:text="@{String.valueOf(weather.humidity), default=`0.88`}" />
 
-        <TextView
-            android:id="@+id/precipValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            app:layout_constraintLeft_toLeftOf="@+id/precipLabel"
-            app:layout_constraintRight_toRightOf="@+id/precipLabel"
-            app:layout_constraintTop_toBottomOf="@+id/precipLabel"
-            android:text="@{String.valueOf(Math.round(weather.precipChance * 100)) + `%`, default=`50%`}" />
+            <TextView
+                android:id="@+id/precipLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:paddingTop="15dp"
+                android:textColor="@color/half_white"
+                app:layout_constraintLeft_toLeftOf="@+id/guideline2"
+                app:layout_constraintRight_toRightOf="@+id/guideline2"
+                app:layout_constraintTop_toBottomOf="@+id/temperatureValue"
+                android:text="RAIN/SNOW?" />
 
-        <TextView
-            android:id="@+id/summaryValue"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{weather.summary, default=`Stormy with a chance of meatballs`}"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/humidityValue"
-            tools:text="Stormy with a chance of meatballs" />
+            <TextView
+                android:id="@+id/precipValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                app:layout_constraintLeft_toLeftOf="@+id/precipLabel"
+                app:layout_constraintRight_toRightOf="@+id/precipLabel"
+                app:layout_constraintTop_toBottomOf="@+id/precipLabel"
+                android:text="@{String.valueOf(Math.round(weather.precipChance * 100)) + `%`, default=`50%`}" />
 
-        <TextView
-            android:id="@+id/darkSkyAttribution"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/dark_sky_message"
-            android:textColor="@android:color/white"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
+            <TextView
+                android:id="@+id/summaryValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{weather.summary, default=`Stormy with a chance of meatballs`}"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/humidityValue"
+                tools:text="Stormy with a chance of meatballs" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toTopOf="@+id/locationValue"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:onClick="refreshOnClick"
-            app:srcCompat="@drawable/refresh" />
+            <TextView
+                android:id="@+id/darkSkyAttribution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:text="@string/dark_sky_message"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:background="#40ffffff"
-            android:onClick="hourlyOnClick"
-            android:paddingLeft="5dp"
-            android:paddingRight="5dp"
-            android:text="HOURLY FORECAST"
-            android:textColor="@android:color/white"
-            app:layout_constraintBottom_toTopOf="@+id/darkSkyAttribution"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/summaryValue" />
-    </android.support.constraint.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/locationValue"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:onClick="refreshOnClick"
+                app:srcCompat="@drawable/refresh" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="#40ffffff"
+                android:onClick="hourlyOnClick"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="HOURLY FORECAST"
+                android:textColor="@android:color/white"
+                app:layout_constraintBottom_toTopOf="@+id/darkSkyAttribution"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/summaryValue" />
+        </android.support.constraint.ConstraintLayout>
 </layout>

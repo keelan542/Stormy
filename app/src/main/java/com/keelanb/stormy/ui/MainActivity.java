@@ -191,6 +191,8 @@ public class MainActivity extends AppCompatActivity {
         return isAvailable;
     }
 
+
+
     private void alertUserAboutError(int errorCode) {
         AlertDialogFragment dialogFragment = new AlertDialogFragment();
 
