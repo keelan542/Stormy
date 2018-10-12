@@ -1,10 +1,11 @@
 package com.keelanb.stormy.Weather;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class Hour {
+public class Hour implements Serializable {
     private long time;
     private String summary;
     private double temperature;
